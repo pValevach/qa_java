@@ -49,10 +49,12 @@ public class LionTest {
     public void getFoodTest() throws Exception {
         Lion lion = new Lion("Самка", feline);
 
-        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        List<String> expected = List.of("Животные", "Птицы", "Рыба");
+
+        Mockito.when(feline.getFood("Хищник")).thenReturn(expected);
 
         List<String> actual = lion.getFood();
 
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), actual);
+        assertEquals(expected, actual);
     }
 }

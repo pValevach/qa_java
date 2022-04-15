@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class FelineTest {
 
@@ -34,5 +35,14 @@ public class FelineTest {
         Feline feline = new Feline();
         int actual = feline.getKittens(2);
         assertEquals(2, actual);
+    }
+
+    @Test
+    public void getFoodException() throws Exception {
+        Feline feline = new Feline();
+        Exception exception = assertThrows("Ошибки нет",Exception.class,
+                () -> feline.getFood(""));
+
+        assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник",exception.getMessage());
     }
 }
